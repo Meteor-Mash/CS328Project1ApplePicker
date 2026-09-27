@@ -59,6 +59,11 @@ public class ApplePicker : MonoBehaviour
         {
             Destroy(tempGO);
         }
+        GameObject[] bombArray = GameObject.FindGameObjectsWithTag("Bomb");
+        foreach (GameObject tempGO in bombArray)
+        {
+            Destroy(tempGO);
+        }
         appleTree.pause = true;
         roundTracker.GameOver();
         foreach (GameObject tempBasket in basketList)
