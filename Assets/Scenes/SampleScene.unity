@@ -365,8 +365,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 959117893716701088, guid: b061345e2f629cb408b8a26da8c8c79d, type: 3}
-      propertyPath: leftAndRightEdge
-      value: 24
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 959117893716701088, guid: b061345e2f629cb408b8a26da8c8c79d, type: 3}
+      propertyPath: changeDirChance
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 4414929660926906634, guid: b061345e2f629cb408b8a26da8c8c79d, type: 3}
       propertyPath: m_RootOrder
