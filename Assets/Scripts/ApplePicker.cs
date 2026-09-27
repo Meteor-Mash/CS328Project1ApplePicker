@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ApplePicker : MonoBehaviour
 {
     [Header("Inscribed")]
     public GameObject basketPrefab;
+    public GameObject restartButtonPrefab;
     public RoundTracker roundTracker;
     public AppleTree appleTree;
+    public Transform canvasTransform;
     public int numBaskets = 4;
     public float basketBottomY = -14f;
     public float basketSpacingY = 2f;
@@ -43,13 +46,19 @@ public class ApplePicker : MonoBehaviour
         basketList.RemoveAt(basketIndex);
         Destroy(basketGO);
         if(!(roundTracker.UpdateRound())) {
-            appleTree.pause = true;
+            GameOver();
         }
  /*       if (basketList.Count == 0)
         {
             SceneManager.LoadScene("_Scene_0");
         }
  */
+    }
+
+    void GameOver()
+    {
+        appleTree.pause = true;
+        GameObject restartButtonGO = Instantiate(restartButtonPrefab, canvasTransform);
     }
 
     // Update is called once per frame
