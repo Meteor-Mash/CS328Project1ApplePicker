@@ -36,6 +36,11 @@ public class ApplePicker : MonoBehaviour
 
     public void AppleMissed()
     {
+        if (!(roundTracker.UpdateRound()))
+        {
+            GameOver();
+            return;
+        }
         GameObject[] appleArray = GameObject.FindGameObjectsWithTag("Apple");
             foreach (GameObject tempGO in appleArray)
         {
@@ -45,19 +50,21 @@ public class ApplePicker : MonoBehaviour
         GameObject basketGO = basketList[basketIndex];
         basketList.RemoveAt(basketIndex);
         Destroy(basketGO);
-        if(!(roundTracker.UpdateRound())) {
-            GameOver();
-        }
- /*       if (basketList.Count == 0)
-        {
-            SceneManager.LoadScene("_Scene_0");
-        }
- */
     }
 
-    void GameOver()
+    public void GameOver()
     {
+        GameObject[] appleArray = GameObject.FindGameObjectsWithTag("Apple");
+        foreach (GameObject tempGO in appleArray)
+        {
+            Destroy(tempGO);
+        }
         appleTree.pause = true;
+        roundTracker.GameOver();
+        foreach (GameObject tempBasket in basketList)
+        {
+            Destroy(tempBasket);
+        }
         GameObject restartButtonGO = Instantiate(restartButtonPrefab, canvasTransform);
     }
 

@@ -29,7 +29,10 @@ public class RoundTracker : MonoBehaviour
             uiText.text = "Round: " + round.ToString();
             return true;
         }
-        uiText.text = "Game Over";
         return false;
+    }
+    public void GameOver()
+    {
+        uiText.text = "Game Over";
     }
 }
